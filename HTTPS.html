@@ -1,0 +1,40 @@
+
+<!--* Name: Yueyihan Qi-->
+<!--* Course: CS-665 Software Designs & Patterns-->
+<!--* Date: 03/21/2024-->
+<!--* File Name: HTTPS.html-->
+<!--* Description: This page is a https display of the new system -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer ID</title>
+</head>
+<body>
+<!-- Displaying the title "Customer ID" -->
+<h1>Customer ID:</h1>
+<div id="customerId"></div>
+<script>
+    //Fetching customer ID from the server
+    fetch('http://localhost:8080/customer')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('ERROR');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Handling the data received from the server
+            // Displaying the customer ID on the webpage-->
+            document.getElementById("customerId").innerHTML = "Customer ID: " + data.customerId;
+        })
+        .catch(error => {
+            //Handling any errors that occur during the fetch operation
+            console.error('ERROR', error);
+        });
+</script>
+</body>
+</html>
